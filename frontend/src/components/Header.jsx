@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <div className='navbar bg-base-100'>
@@ -24,71 +25,38 @@ const Header = () => {
             className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
           >
             <li>
-              <a href='ksjfd'>Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <a href='das' className='justify-between'>
-                Parent
-                <svg
-                  className='fill-current'
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
-                  viewBox='0 0 24 24'
-                >
-                  <path d='M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z' />
-                </svg>
-              </a>
-              <ul className='p-2'>
-                <li>
-                  <p>Submenu 1</p>
-                </li>
-                <li>
-                  <p>Submenu 2</p>
-                </li>
-              </ul>
+              <a href='home'>Home</a>
             </li>
             <li>
-              <p>Item 3</p>
+              <a href='explore'>Explore</a>
             </li>
           </ul>
         </div>
-        <p className='btn btn-ghost normal-case text-xl'>daisyUI</p>
+        <a href='kfdsa' className='btn btn-ghost normal-case text-3xl'>
+          <img
+            className='img-fluid'
+            src='https://i.ibb.co/vzQRjXJ/logo.png'
+            width={100}
+            alt='Logo'
+          />
+        </a>
       </div>
       <div className='navbar-center hidden lg:flex'>
         <ul className='menu menu-horizontal px-1'>
           <li>
-            <p>Item 1</p>
-          </li>
-          <li tabIndex={0}>
-            <p>
-              Parent
-              <svg
-                className='fill-current'
-                xmlns='http://www.w3.org/2000/svg'
-                width='20'
-                height='20'
-                viewBox='0 0 24 24'
-              >
-                <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
-              </svg>
-            </p>
-            <ul className='p-2'>
-              <li>
-                <p>Submenu 1</p>
-              </li>
-              <li>
-                <p>Submenu 2</p>
-              </li>
-            </ul>
+            <p>Home</p>
           </li>
           <li>
-            <p>Item 3</p>
+            <a href='jkfd'>Explore</a>
           </li>
         </ul>
       </div>
       <div className='navbar-end'>
-        <p className='btn'>Get started</p>
+        <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
+          <div className='w-10 rounded-full'>
+            <img src='photo' alt='User' />
+          </div>
+        </label>
       </div>
     </div>
   )
