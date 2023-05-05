@@ -1,12 +1,22 @@
-import React from 'react'
-import { FiPlus, FiEdit, FiTrash } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { FiPlus, FiEdit, FiTrash } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import SuchanaContext from "../../context/SuchanaContext";
+import { useEffect } from "react";
+import { useContext } from "react";
 
 const AdminUsers = () => {
+  const { fetchUsers, users } = useContext(SuchanaContext);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  console.log(users);
   return (
-    <div className='container mx-auto mt-10 min-h-screen'>
-      <div className='overflow-x-auto'>
-        <table className='table w-full'>
+    <div className="container mx-auto mt-10 min-h-screen">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           {/* head */}
           <thead>
             <tr>
@@ -14,99 +24,50 @@ const AdminUsers = () => {
               <th>Email</th>
               <th>Phone</th>
               <th>Role</th>
-              <th>Role</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
-              <td>
-                <div className='flex items-center space-x-3'>
-                  <div className='avatar'>
-                    <div className='mask mask-squircle w-12 h-12'>
-                      <img
-                        src='/tailwind-css-component-profile-2@56w.png'
-                        alt='Avatar Tailwind CSS Component'
-                      />
+            {users?.map((user) => (
+              <tr key={user._id}>
+                <td>
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img src={user.image} alt={user.name} />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-bold">{user.name}</div>
+                      <div className="text-sm opacity-50">{user.username}</div>
                     </div>
                   </div>
-                  <div>
-                    <div className='font-bold'>Hart Hagerty</div>
-                    <div className='text-sm opacity-50'>United States</div>
-                  </div>
-                </div>
-              </td>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-              <td>Blue</td>
-              <td>
-                <Link
-                  to={'/admin/users/edit/id'}
-                  className='btn btn-ghost mr-2'
-                >
-                  <FiEdit />
-                </Link>
-                <Link
-                  to={'/admin/users/delete/id'}
-                  className='btn btn-ghost mr-2'
-                >
-                  <FiTrash />
-                </Link>
-              </td>
-            </tr>
-            {/* row 2 */}
-            <tr className='hover'>
-              <td>
-                <div className='flex items-center space-x-3'>
-                  <div className='avatar'>
-                    <div className='mask mask-squircle w-12 h-12'>
-                      <img
-                        src='/tailwind-css-component-profile-2@56w.png'
-                        alt='Avatar Tailwind CSS Component'
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className='font-bold'>Hart Hagerty</div>
-                    <div className='text-sm opacity-50'>United States</div>
-                  </div>
-                </div>
-              </td>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-              <td>Purple</td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-              <td>
-                <div className='flex items-center space-x-3'>
-                  <div className='avatar'>
-                    <div className='mask mask-squircle w-12 h-12'>
-                      <img
-                        src='/tailwind-css-component-profile-2@56w.png'
-                        alt='Avatar Tailwind CSS Component'
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className='font-bold'>Hart Hagerty</div>
-                    <div className='text-sm opacity-50'>United States</div>
-                  </div>
-                </div>
-              </td>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-              <td>Red</td>
-            </tr>
+                </td>
+                <td>{user.email}</td>
+                <td>{user.phone}</td>
+                <td>{user.role}</td>
+                <td>
+                  <Link
+                    to={"/admin/users/edit/id"}
+                    className="btn btn-ghost mr-2"
+                  >
+                    <FiEdit />
+                  </Link>
+                  <Link
+                    to={"/admin/users/delete/id"}
+                    className="btn btn-ghost mr-2"
+                  >
+                    <FiTrash />
+                  </Link>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminUsers
+export default AdminUsers;

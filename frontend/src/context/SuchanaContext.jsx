@@ -1,12 +1,13 @@
 import { createContext, useReducer } from "react";
 import SuchanaReducer from "./SuchanaReducer";
+import axios from "axios";
 
 const SuchanaContext = createContext();
 
 function SuchanaContextProvider({ children }) {
   const initialState = {
     loading: true,
-    user: "",
+    users: null,
     role: "",
   };
 
@@ -29,10 +30,21 @@ function SuchanaContextProvider({ children }) {
   //     }
   //   };
 
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/users/auth");
+      const data = response.data;
+      dispatch({ type: "GET_USERS", payload: data });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <SuchanaContext.Provider
       value={{
         ...state,
+        fetchUsers,
       }}
     >
       {children}
