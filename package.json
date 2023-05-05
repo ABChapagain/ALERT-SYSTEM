@@ -1,5 +1,6 @@
 {
   "name": "mechi-mavericks",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.0.1",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "mongoose": "^7.1.0",
