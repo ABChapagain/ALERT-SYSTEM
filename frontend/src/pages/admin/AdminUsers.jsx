@@ -43,6 +43,7 @@ const AdminUsers = () => {
                       <div className="text-sm opacity-50">{user.username}</div>
                     </div>
                   </div>
+<<<<<<< HEAD
                 </td>
                 <td>{user.email}</td>
                 <td>{user.phone}</td>
@@ -63,6 +64,107 @@ const AdminUsers = () => {
                 </td>
               </tr>
             ))}
+=======
+                  <div>
+                    <div className='font-bold'>Hart Hagerty</div>
+                    <div className='text-sm opacity-50'>United States</div>
+                  </div>
+                </div>
+              </td>
+              <td>Cy Ganderton</td>
+              <td>Quality Control Specialist</td>
+              <td>Blue</td>
+              <td>Blue</td>
+              <td>
+                <Link
+                  to={'/admin/users/id/edit'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiEdit />
+                </Link>
+                <Link
+                  to={'/admin/users/delete/id'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiTrash />
+                </Link>
+              </td>
+            </tr>
+            {/* row 2 */}
+            <tr className='hover'>
+              <td>
+                <div className='flex items-center space-x-3'>
+                  <div className='avatar'>
+                    <div className='mask mask-squircle w-12 h-12'>
+                      <img
+                        src='/tailwind-css-component-profile-2@56w.png'
+                        alt='Avatar Tailwind CSS Component'
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div className='font-bold'>Hart Hagerty</div>
+                    <div className='text-sm opacity-50'>United States</div>
+                  </div>
+                </div>
+              </td>
+              <td>Hart Hagerty</td>
+              <td>Desktop Support Technician</td>
+              <td>Purple</td>
+              <td>Purple</td>
+              <td>
+                <Link
+                  to={'/admin/users/id/edit'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiEdit />
+                </Link>
+                <Link
+                  to={'/admin/users/delete/id'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiTrash />
+                </Link>
+              </td>
+            </tr>
+            {/* row 3 */}
+            <tr>
+              <td>
+                <div className='flex items-center space-x-3'>
+                  <div className='avatar'>
+                    <div className='mask mask-squircle w-12 h-12'>
+                      <img
+                        src='/tailwind-css-component-profile-2@56w.png'
+                        alt='Avatar Tailwind CSS Component'
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div className='font-bold'>Hart Hagerty</div>
+                    <div className='text-sm opacity-50'>United States</div>
+                  </div>
+                </div>
+              </td>
+              <td>Brice Swyre</td>
+              <td>Tax Accountant</td>
+              <td>Red</td>
+              <td>Red</td>
+              <td>
+                <Link
+                  to={'/admin/users/id/edit'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiEdit />
+                </Link>
+                <Link
+                  to={'/admin/users/delete/id'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiTrash />
+                </Link>
+              </td>
+            </tr>
+>>>>>>> a7525b2d44fd310a3eca17f2e6f86a1e8cb9a5eb
           </tbody>
         </table>
       </div>
