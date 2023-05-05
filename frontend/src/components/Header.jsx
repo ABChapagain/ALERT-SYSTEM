@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
+
 const Header = () => {
   return (
-    <div className='navbar bg-base-100'>
+    <div className='navbar bg-base-100 sticky top-0'>
       <div className='navbar-start'>
         <div className='dropdown'>
           <label tabIndex={0} className='btn btn-ghost lg:hidden'>
@@ -25,38 +26,40 @@ const Header = () => {
             className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
           >
             <li>
-              <a href='home'>Home</a>
+              <Link to={'/'}>Home</Link>
             </li>
             <li>
               <a href='explore'>Explore</a>
             </li>
           </ul>
         </div>
-        <a href='kfdsa' className='btn btn-ghost normal-case text-3xl'>
+        <Link to={'/'} className='btn btn-ghost normal-case text-3xl'>
           <img
             className='img-fluid'
             src='https://i.ibb.co/vzQRjXJ/logo.png'
             width={100}
             alt='Logo'
           />
-        </a>
+        </Link>
       </div>
       <div className='navbar-center hidden lg:flex'>
         <ul className='menu menu-horizontal px-1'>
           <li>
-            <p>Home</p>
+            <Link to={'/'}>Home</Link>
           </li>
           <li>
-            <a href='jkfd'>Explore</a>
+            <Link to={'/explore'}>Explore</Link>
           </li>
         </ul>
       </div>
       <div className='navbar-end'>
-        <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
-          <div className='w-10 rounded-full'>
-            <img src='photo' alt='User' />
-          </div>
-        </label>
+        <Link to={'/login'}>
+          <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
+            <div className='w-10 rounded-full'>
+              <img src='photo' alt='User' />
+            </div>
+          </label>
+        </Link>
       </div>
     </div>
   )
