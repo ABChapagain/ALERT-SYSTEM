@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom'
 const AdminUsers = () => {
   return (
     <div className='container mx-auto mt-10 min-h-screen'>
-      <div className='my-5'>
-        <Link to={'/admin/users/add'} className='btn btn-ghost mr-2'>
-          <FiPlus className='mr-2' /> Add User
-        </Link>
-      </div>
       <div className='overflow-x-auto'>
         <table className='table w-full'>
           {/* head */}

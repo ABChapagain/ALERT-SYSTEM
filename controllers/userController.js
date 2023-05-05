@@ -32,4 +32,9 @@ const authUser = asyncHandler(async (req, res) => {
   }
 })
 
-export { authUser }
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({})
+  res.json(users)
+})
+
+export { authUser, getUsers }
