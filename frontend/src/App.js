@@ -12,6 +12,7 @@ import Phone from "./pages/Phone";
 
 //context import
 import { SuchanaContextProvider } from "./context/SuchanaContext";
+import Check from "./pages/Check";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/auth" element={<Login />} />
             <Route path="/auth/phone" element={<Phone />} />
             <Route path="/explore" element={<Explore />} />
+            <Route path="/check" element={<Check />} />
           </Routes>
         </main>
         <Footer />

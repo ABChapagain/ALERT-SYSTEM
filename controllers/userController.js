@@ -7,7 +7,8 @@ import User from '../models/userModel.js'
 // @access  Public
 
 const authUser = asyncHandler(async (req, res) => {
-  const { name, email, phone, username, image } = req.body
+  const { data } = req.body
+  const { name, email, phone, nickname, picture } = data
 
   const userExists = await User.findOne({ email })
 
@@ -16,8 +17,8 @@ const authUser = asyncHandler(async (req, res) => {
       name,
       email,
       phone,
-      username,
-      image,
+      username: nickname,
+      image: picture,
     })
 
     if (user) {

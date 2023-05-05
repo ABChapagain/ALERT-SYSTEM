@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 import SuchanaReducer from "./SuchanaReducer";
+import axios from "axios";
 
 const SuchanaContext = createContext();
 
@@ -8,6 +9,7 @@ function SuchanaContextProvider({ children }) {
     loading: true,
     user: "",
     role: "",
+    hello: ""
   };
 
   const [state, dispatch] = useReducer(SuchanaReducer, initialState);
@@ -28,6 +30,20 @@ function SuchanaContextProvider({ children }) {
   //       //console.error(error);
   //     }
   //   };
+
+  const checkUser = async (data) => {
+    try {
+      const response = await axios.post(
+        `api/users/check`,
+        data
+      );
+      const user = response.data.user;
+      dispatch({ type: "GET_USER", payload: user });
+    } catch (error) {
+      //console.error(error);
+    }
+  };
+
 
   return (
     <SuchanaContext.Provider

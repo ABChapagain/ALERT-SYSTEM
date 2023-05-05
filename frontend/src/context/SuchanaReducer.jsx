@@ -1,13 +1,13 @@
 import React from "react";
 
-function MoviesReducer(state, action) {
+function SuchanaReducer(state, action) {
   switch (action.type) {
-    case "GET_TRENDING_MOVIES":
-      return { ...state, trendingMovies: action.payload };
+    case "GET_HELLO_WORLD":
+      return { ...state, hello: action.payload };
 
     default:
       return state;
   }
 }
 
-export default MoviesReducer;
+export default SuchanaReducer;
