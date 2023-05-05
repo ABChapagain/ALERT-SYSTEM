@@ -16,7 +16,7 @@ const app = express()
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
-app.use('/api/users', require('./routes/userRoute'))
+app.use('/api/users', userRoute)
 
 const PORT = process.env.PORT || 5000
 
