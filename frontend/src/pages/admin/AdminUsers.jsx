@@ -43,7 +43,7 @@ const AdminUsers = () => {
               <td>Blue</td>
               <td>
                 <Link
-                  to={'/admin/users/edit/id'}
+                  to={'/admin/users/id/edit'}
                   className='btn btn-ghost mr-2'
                 >
                   <FiEdit />
@@ -78,6 +78,20 @@ const AdminUsers = () => {
               <td>Desktop Support Technician</td>
               <td>Purple</td>
               <td>Purple</td>
+              <td>
+                <Link
+                  to={'/admin/users/id/edit'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiEdit />
+                </Link>
+                <Link
+                  to={'/admin/users/delete/id'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiTrash />
+                </Link>
+              </td>
             </tr>
             {/* row 3 */}
             <tr>
@@ -101,6 +115,20 @@ const AdminUsers = () => {
               <td>Tax Accountant</td>
               <td>Red</td>
               <td>Red</td>
+              <td>
+                <Link
+                  to={'/admin/users/id/edit'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiEdit />
+                </Link>
+                <Link
+                  to={'/admin/users/delete/id'}
+                  className='btn btn-ghost mr-2'
+                >
+                  <FiTrash />
+                </Link>
+              </td>
             </tr>
           </tbody>
         </table>
