@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Explore from './pages/Explore'
+import Phone from './pages/Phone'
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
       <main className='min-h-screen'>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/auth' element={<Login />} />
+          <Route path='/auth/phone' element={<Phone />} />
           <Route path='/explore' element={<Explore />} />
         </Routes>
       </main>
