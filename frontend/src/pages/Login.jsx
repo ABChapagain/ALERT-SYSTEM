@@ -8,6 +8,12 @@ function Login() {
     window.location.href = '/explore'
   }
 
+  const handleLoginClick = () => {
+    loginWithRedirect({
+      redirectUri: window.location.origin + '/check',
+    })
+  }
+
   if (!isAuthenticated) {
     return (
       <div className='hero min-h-screen'>
@@ -26,7 +32,7 @@ function Login() {
             <div className='card-actions justify-center'>
               <button
                 className='btn flex gap-3 btn-primary'
-                onClick={() => loginWithRedirect()}
+                onClick={() => handleLoginClick()}
               >
                 <img
                   className='w-5 h-5'
