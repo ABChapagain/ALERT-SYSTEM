@@ -83,19 +83,18 @@ const Header = () => {
                 tabIndex={0}
                 className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
               >
+                {user.role === 'super-admin' ||
+                  user.role === 'authority-admin' ||
+                  (user.role === 'local-admin' && (
+                    <li>
+                      <Link to={'/admin/alerts'}>Admin</Link>
+                    </li>
+                  ))}
                 <li>
-                  <a className='justify-between '>{user.name}</a>
+                  <Link to={'/admin/alerts'}>Admin</Link>
                 </li>
                 <li>
-                  <Link href={'/profile'} className='justify-between'>
-                    Profile
-                  </Link>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a onClick={() => logout()}>Logout</a>
+                  <button onClick={() => logout()}>Logout</button>
                 </li>
               </ul>
             </div>
