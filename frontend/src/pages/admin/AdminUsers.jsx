@@ -1,12 +1,22 @@
-import React from 'react'
-import { FiPlus, FiEdit, FiTrash } from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { FiPlus, FiEdit, FiTrash } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import SuchanaContext from "../../context/SuchanaContext";
+import { useEffect } from "react";
+import { useContext } from "react";
 
 const AdminUsers = () => {
+  const { fetchUsers, users } = useContext(SuchanaContext);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  console.log(users);
   return (
-    <div className='container mx-auto mt-10 min-h-screen'>
-      <div className='overflow-x-auto'>
-        <table className='table w-full'>
+    <div className="container mx-auto mt-10 min-h-screen">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           {/* head */}
           <thead>
             <tr>
@@ -14,23 +24,47 @@ const AdminUsers = () => {
               <th>Email</th>
               <th>Phone</th>
               <th>Role</th>
-              <th>Role</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
-              <td>
-                <div className='flex items-center space-x-3'>
-                  <div className='avatar'>
-                    <div className='mask mask-squircle w-12 h-12'>
-                      <img
-                        src='/tailwind-css-component-profile-2@56w.png'
-                        alt='Avatar Tailwind CSS Component'
-                      />
+            {users?.map((user) => (
+              <tr key={user._id}>
+                <td>
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img src={user.image} alt={user.name} />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-bold">{user.name}</div>
+                      <div className="text-sm opacity-50">{user.username}</div>
                     </div>
                   </div>
+<<<<<<< HEAD
+                </td>
+                <td>{user.email}</td>
+                <td>{user.phone}</td>
+                <td>{user.role}</td>
+                <td>
+                  <Link
+                    to={"/admin/users/edit/id"}
+                    className="btn btn-ghost mr-2"
+                  >
+                    <FiEdit />
+                  </Link>
+                  <Link
+                    to={"/admin/users/delete/id"}
+                    className="btn btn-ghost mr-2"
+                  >
+                    <FiTrash />
+                  </Link>
+                </td>
+              </tr>
+            ))}
+=======
                   <div>
                     <div className='font-bold'>Hart Hagerty</div>
                     <div className='text-sm opacity-50'>United States</div>
@@ -130,11 +164,12 @@ const AdminUsers = () => {
                 </Link>
               </td>
             </tr>
+>>>>>>> a7525b2d44fd310a3eca17f2e6f86a1e8cb9a5eb
           </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminUsers
+export default AdminUsers;
