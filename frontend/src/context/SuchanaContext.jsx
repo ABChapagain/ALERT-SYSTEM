@@ -9,7 +9,8 @@ function SuchanaContextProvider({ children }) {
   const initialState = {
     loading: true,
     users: null,
-    role: "",
+    role: null,
+    currentUser: null,
   };
 
   const [state, dispatch] = useReducer(SuchanaReducer, initialState);
@@ -24,10 +25,14 @@ function SuchanaContextProvider({ children }) {
     }
   };
 
-  const fetchLoggedUserInfo = async (email) => {
+  const checkCurrentUser = async (data) => {
     try {
-      const response = await axios.get(`${origin}/api/user`);
-    } catch (e) {}
+      // const response = await axios.get(`${origin}/api/user`);
+      dispatch({ type: "CHECK_CURRENT_USER", payload: data });
+      // console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -35,7 +40,7 @@ function SuchanaContextProvider({ children }) {
       value={{
         ...state,
         fetchUsers,
-        fetchLoggedUserInfo,
+        checkCurrentUser,
       }}
     >
       {children}
