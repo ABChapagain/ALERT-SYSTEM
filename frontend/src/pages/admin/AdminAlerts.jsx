@@ -28,12 +28,6 @@ const AdminAlert = () => {
                 <Link to={`/admin/alerts/id`} className='btn btn-ghost mr-2'>
                   <FiEye />
                 </Link>
-                <Link to={`/admin/alerts/id`} className='btn btn-ghost mr-2'>
-                  <FiX />
-                </Link>
-                <Link to={`/admin/alerts/id`} className='btn btn-ghost mr-2'>
-                  <FiCheck />
-                </Link>
               </td>
             </tr>
           </tbody>

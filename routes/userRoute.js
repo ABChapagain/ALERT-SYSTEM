@@ -2,8 +2,14 @@ import express from 'express'
 
 const router = express.Router()
 
-import { authUser, getUsers } from '../controllers/userController.js'
+import {
+  authUser,
+  getUsers,
+  updatePhone,
+} from '../controllers/userController.js'
 
-router.route('/auth').post(authUser).get(getUsers)
+router.route('/auth').post(authUser)
+router.route('/').get(getUsers)
+router.route('/updatePhone').post(updatePhone)
 
 export default router

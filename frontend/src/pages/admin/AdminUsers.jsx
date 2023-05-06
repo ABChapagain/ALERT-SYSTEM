@@ -1,5 +1,5 @@
 import React from 'react'
-import { FiPlus, FiEdit, FiTrash } from 'react-icons/fi'
+import { FiEdit, FiTrash, FiCheck, FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import SuchanaContext from '../../context/SuchanaContext'
 import { useEffect } from 'react'
@@ -52,18 +52,39 @@ const AdminUsers = () => {
                 <td>{user.phone}</td>
                 <td>{user.role}</td>
                 <td>
-                  <Link
-                    to={`/admin/users/${user._id}/edit`}
-                    className='btn btn-ghost mr-2'
-                  >
-                    <FiEdit />
-                  </Link>
-                  <Link
-                    to={'/admin/users/delete/id'}
-                    className='btn btn-ghost mr-2'
-                  >
-                    <FiTrash />
-                  </Link>
+                  {user?.role === 'super-admin' ? (
+                    <>
+                      <Link
+                        to={`/admin/users/${user._id}/edit`}
+                        className='btn btn-ghost mr-2'
+                      >
+                        <FiEdit />
+                      </Link>
+                      <Link
+                        to={'/admin/users/delete/id'}
+                        className='btn btn-ghost mr-2'
+                      >
+                        <FiTrash />
+                      </Link>
+                    </>
+                  ) : user.role === 'local-admin' ? (
+                    <>
+                      <Link
+                        to={'/admin/users/delete/id'}
+                        className='btn btn-ghost mr-2'
+                      >
+                        <FiCheck />
+                      </Link>
+                      <Link
+                        to={'/admin/users/delete/id'}
+                        className='btn btn-ghost mr-2'
+                      >
+                        <FiX />
+                      </Link>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                 </td>
               </tr>
             ))}
