@@ -4,13 +4,21 @@ import { Link } from 'react-router-dom'
 import SuchanaContext from '../../context/SuchanaContext'
 import { useEffect } from 'react'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AdminUsers = () => {
-  const { fetchUsers, users } = useContext(SuchanaContext)
+  const navigate = useNavigate()
+  const { fetchUsers, users, currentUser } = useContext(SuchanaContext)
 
   useEffect(() => {
+    if (
+      currentUser?.role !== 'super-admin' ||
+      currentUser?.role !== 'local-admin'
+    ) {
+      navigate('/')
+    }
     fetchUsers()
-  }, [])
+  }, [navigate])
 
   console.log(users)
   return (
@@ -28,7 +36,7 @@ const AdminUsers = () => {
               <th>Email</th>
               <th>Phone</th>
               <th>Role</th>
-              <th></th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -52,7 +60,7 @@ const AdminUsers = () => {
                 <td>{user.phone}</td>
                 <td>{user.role}</td>
                 <td>
-                  {user?.role === 'super-admin' ? (
+                  {currentUser?.role === 'super-admin' ? (
                     <>
                       <Link
                         to={`/admin/users/${user._id}/edit`}
@@ -67,7 +75,7 @@ const AdminUsers = () => {
                         <FiTrash />
                       </Link>
                     </>
-                  ) : user.role === 'local-admin' ? (
+                  ) : currentUser.role === 'local-admin' ? (
                     <>
                       <Link
                         to={'/admin/users/delete/id'}

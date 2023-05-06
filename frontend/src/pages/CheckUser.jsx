@@ -31,7 +31,7 @@ function CheckUser() {
       .then((data) => {
         // console.log(data);
         //sending data to context
-        checkCurrentUser(data);
+        // checkCurrentUser(data);
         if (data.phone) {
           navigate("/");
           console.log("verified");

@@ -5,7 +5,7 @@ function Login() {
   const { loginWithRedirect, isAuthenticated } = useAuth0()
 
   if (isAuthenticated) {
-    window.location.href = '/explore'
+    window.location.href = '/'
   }
 
   const handleLoginClick = () => {

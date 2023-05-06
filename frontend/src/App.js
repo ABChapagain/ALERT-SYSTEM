@@ -19,6 +19,8 @@ import UserEdit from './pages/admin/UserEdit'
 import { SuchanaContextProvider } from './context/SuchanaContext'
 import AlertView from './pages/admin/AlertView'
 import CheckUser from './pages/CheckUser'
+import AdminMessages from './pages/admin/AdminMessages'
+import MessageCreate from './pages/admin/MessageCreate'
 
 function App() {
   return (
@@ -39,6 +41,9 @@ function App() {
             <Route path='/admin/users' element={<AdminUsers />} />
             <Route path='/admin/users/:id' element={<UserEdit />} />
             <Route path='/admin/users/:id/edit' element={<UserEdit />} />
+
+            <Route path='/admin/messages' element={<AdminMessages />} />
+            <Route path='/admin/messages/create' element={<MessageCreate />} />
           </Routes>
         </main>
         <Footer />
