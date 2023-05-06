@@ -23,7 +23,7 @@ function CheckUser() {
     if (permission === 'granted') {
       getToken(messaging, {
         vapidKey:
-          'BPqsnwNI05Ncrsmt7dh_7KwrRBPgvOvUtzKGKb2YhLrJHLr-zWyO76EqzXHb5lr60LtlfDNHN6RSh0nsS7H3EaQ',
+          'BKjSdzKGX8LCoQwV-SRKfgcpLgYR8k6bC7y2h_nzyDGr0LIaZjhvZu5vcVbCF0jg1vx2GUVJtH6DobSbEL-9gYo',
       })
         .then((currentToken) => {
           if (currentToken) {
