@@ -32,11 +32,11 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    get all users
+// @desc    fetches all users
 // @route   POST /api/users
 // @access  Public
 const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find({});
+  const users = await User.find();
   res.json(users);
 });
 
@@ -72,4 +72,24 @@ const fetchSingleUser = asyncHandler(async (req, res) => {
   res.status(200).json(user);
 });
 
-export { authUser, getUsers, updatePhone, getCurrentUser, fetchSingleUser };
+// @desc    edit user role
+// @route   put /api/users/
+// @access  Public
+const updateUserRole = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const { role } = req.body;
+
+  const user = await User.findOne({ _id: id });
+  user.role = role;
+  await user.save();
+  res.status(202).send(user);
+});
+
+export {
+  authUser,
+  getUsers,
+  updatePhone,
+  getCurrentUser,
+  fetchSingleUser,
+  updateUserRole,
+};
