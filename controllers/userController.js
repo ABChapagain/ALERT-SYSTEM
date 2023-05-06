@@ -41,12 +41,12 @@ const getUsers = asyncHandler(async (req, res) => {
 });
 
 // @desc    get single user
-// @route   POST /api/user
+// @route   POST /api/users/:email
 // @access  Public
-const getUser = asyncHandler(async (req, res) => {
+const getCurrentUser = asyncHandler(async (req, res) => {
   const email = req.params.email;
   const users = await User.find({ email: email });
-  res.json(users[0]);
+  res.status(200).json(users[0]);
 });
 
 // @desc    Login
@@ -62,4 +62,14 @@ const updatePhone = asyncHandler(async (req, res) => {
   res.status(200).json({ status: "success", message: "Phone number updated" });
 });
 
-export { authUser, getUsers, updatePhone, getUser };
+// @desc    fetch single user data
+// @route   get /api/users/single/:id
+// @access  Public
+
+const fetchSingleUser = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const user = await User.findById(id);
+  res.status(200).json(user);
+});
+
+export { authUser, getUsers, updatePhone, getCurrentUser, fetchSingleUser };
