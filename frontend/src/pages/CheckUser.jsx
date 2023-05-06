@@ -71,7 +71,7 @@ function CheckUser() {
         if (data.phone) {
           requestPermission();
 
-          // navigate("/");
+          navigate("/");
 
           console.log("verified");
         } else navigate("/auth/phone");
