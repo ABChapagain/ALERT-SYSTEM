@@ -20,12 +20,12 @@ const AdminUsers = () => {
       ) {
         fetchUsers()
       } else {
-        // navigate('/')
+        navigate('/')
       }
       console.log(currentUser)
     }
     // fetchUsers()
-  }, [currentUser])
+  }, [currentUser, navigate, fetchUsers])
 
   return (
     <div className='container mx-auto mt-10 min-h-screen'>

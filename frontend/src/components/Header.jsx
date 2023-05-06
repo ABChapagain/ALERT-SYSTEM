@@ -42,8 +42,20 @@ const Header = () => {
               <Link to={'/'}>Home</Link>
             </li>
             <li>
-              <a href='explore'>Explore</a>
+              <Link to='/explore'>Explore</Link>
             </li>
+            {(currentUser?.role === 'super-admin' ||
+              currentUser?.role === 'authority-admin') && (
+              <li>
+                <Link to={'/admin/alerts'}>Alerts</Link>
+              </li>
+            )}
+            {(currentUser?.role === 'super-admin' ||
+              currentUser?.role === 'local-admin') && (
+              <li>
+                <Link to={'/admin/users'}>Users</Link>
+              </li>
+            )}
           </ul>
         </div>
         <Link to={'/'} className='btn btn-ghost normal-case text-3xl'>
@@ -63,6 +75,18 @@ const Header = () => {
           <li>
             <Link to={'/explore'}>Explore</Link>
           </li>
+          {(currentUser?.role === 'super-admin' ||
+            currentUser?.role === 'authority-admin') && (
+            <li>
+              <Link to={'/admin/alerts'}>Alerts</Link>
+            </li>
+          )}
+          {(currentUser?.role === 'super-admin' ||
+            currentUser?.role === 'local-admin') && (
+            <li>
+              <Link to={'/admin/users'}>Users</Link>
+            </li>
+          )}
         </ul>
       </div>
 
@@ -88,7 +112,9 @@ const Header = () => {
             >
               {currentUser?.role !== 'user' && (
                 <li>
-                  <Link to={'/admin/alerts'}>Admin ({currentUser.role})</Link>
+                  <button>
+                    {currentUser.username} ({currentUser.role})
+                  </button>
                 </li>
               )}
               <li>

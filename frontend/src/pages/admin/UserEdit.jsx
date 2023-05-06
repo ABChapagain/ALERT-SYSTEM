@@ -1,8 +1,26 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
+import { useContext } from 'react'
+import SuchanaContext from '../../context/SuchanaContext'
+import { useNavigate } from 'react-router-dom'
 
 const UserEdit = () => {
+  const navigate = useNavigate()
   const [role, setRole] = useState('')
+  const { currentUser } = useContext(SuchanaContext)
+
+  useEffect(() => {
+    if (currentUser === null) {
+      //
+    } else {
+      if (currentUser?.role === 'super-admin') {
+        // fetchSingleUser()
+      } else {
+        navigate('/')
+      }
+    }
+  }, [currentUser, navigate])
 
   return (
     <div className='hero min-h-screen'>

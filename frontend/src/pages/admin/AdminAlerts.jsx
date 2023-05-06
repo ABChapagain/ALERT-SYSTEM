@@ -1,22 +1,35 @@
-import React from "react";
-import { FiEye, FiCheck, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import { useEffect, useContext } from "react";
-import SuchanaContext from "../../context/SuchanaContext";
+import React from 'react'
+import { FiEye } from 'react-icons/fi'
+import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useContext } from 'react'
+import SuchanaContext from '../../context/SuchanaContext'
 
 const AdminAlert = () => {
-  const { fetchAlerts, alerts } = useContext(SuchanaContext);
+  const navigate = useNavigate()
+  const { fetchAlerts, alerts, currentUser } = useContext(SuchanaContext)
 
   useEffect(() => {
-    fetchAlerts();
-  }, []);
+    if (currentUser === null) {
+      //
+    } else {
+      if (
+        currentUser?.role === 'authority-admin' ||
+        currentUser?.role === 'super-admin'
+      ) {
+        fetchAlerts()
+      } else {
+        navigate('/')
+      }
+    }
 
-  console.log(alerts);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser, navigate])
 
+  console.log(alerts)
   return (
-    <div className="container mx-auto mt-10 min-h-screen">
-      <div className="overflow-x-auto">
-        <table className="table w-full">
+    <div className='container mx-auto mt-10 min-h-screen'>
+      <div className='overflow-x-auto'>
+        <table className='table w-full'>
           {/* head */}
           <thead>
             <tr>
@@ -24,33 +37,31 @@ const AdminAlert = () => {
               <th>Location</th>
               <th>User</th>
               <th>User's Phone</th>
-              <th></th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            {alerts &&
-              alerts.map((alert) => (
-                <tr>
-                  <th>1</th>
-                  <td>Cy Ganderton</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
-                  <td>
-                    <Link
-                      to={`/admin/alerts/id`}
-                      className="btn btn-ghost mr-2"
-                    >
-                      <FiEye />
-                    </Link>
-                  </td>
-                </tr>
-              ))}
+            {alerts?.map((alert) => (
+              <tr key={alert._id}>
+                <td>{alert.title}</td>
+                <td>{`${alert.location.lat}, ${alert.location.lang}`}</td>
+                <td>{alert.user.name}</td>
+                <td>{alert.user.phone}</td>
+                <td>
+                  <Link
+                    to={`/alerts/${alert._id}`}
+                    className='btn btn-ghost mr-2'
+                  >
+                    <FiEye />
+                  </Link>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AdminAlert;
+export default AdminAlert

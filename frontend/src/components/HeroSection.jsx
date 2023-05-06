@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import SuchanaContext from '../context/SuchanaContext'
 
 const HeroSection = () => {
-  var navigate = useNavigate()
+  const navigate = useNavigate()
   const { user, isAuthenticated } = useAuth0()
-  var [cordinates, setCordinates] = React.useState({})
+  const [cordinates, setCordinates] = React.useState({})
+
+  const { currentUser } = useContext(SuchanaContext)
+
   function getCordinates() {
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position.coords.latitude, position.coords.longitude)
@@ -34,7 +39,7 @@ const HeroSection = () => {
           lat: cordinates?.lat,
           lang: cordinates?.lang,
         },
-        userEmail: user?.email,
+        user: currentUser?._id,
         alertType: 'elephant',
       }),
     })
