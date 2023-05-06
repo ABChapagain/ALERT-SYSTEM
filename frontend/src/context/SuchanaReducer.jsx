@@ -8,6 +8,12 @@ function MoviesReducer(state, action) {
     case "CHECK_CURRENT_USER":
       return { ...state, currentUser: action.payload };
 
+    case "GET_ALERTS":
+      return { ...state, alerts: action.payload };
+
+    case "GET_USER":
+      return { ...state, singleUser: action.payload };
+
     default:
       return state;
   }
