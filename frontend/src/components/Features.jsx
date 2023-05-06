@@ -1,4 +1,7 @@
 import React from 'react'
+import { ImLocation } from 'react-icons/im'
+import { MdOutlineSecurity } from 'react-icons/md'
+import { AiOutlineFieldTime } from 'react-icons/ai'
 
 function Features() {
   return (
@@ -18,58 +21,48 @@ function Features() {
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16'>
             <div className='bg-white shadow-lg rounded-lg'>
               <div className='p-6'>
-                <svg className='w-16 h-16 text-gray-700' viewBox='0 0 24 24'>
-                  <path
-                    fill='currentColor'
-                    d='M20.7,7.3c-1.1-1.1-2.9-1.2-4.2-0.3l-7.3,4.4L7.8,7.1C7.4,6.8,7,6.7,6.6,6.7c-0.6,0-1.1,0.2-1.5,0.6L2.3,9.3C1.5,10.1,1.5,11.4,2.3,12.2l7.3,4.4l0,0c0.6,0.4,1.3,0.6,2,0.6s1.4-0.2,2-0.6l7.3-4.4C21.6,10.2,21.6,8.9,20.7,7.3z'
-                  />
-                </svg>
+                <ImLocation size={25} />
+
                 <h3 className='text-xl font-medium text-gray-900 mt-4'>
-                  Feature 1
+                  Geolocation Feature
                 </h3>
                 <p className='mt-2 text-gray-600'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus maximus faucibus tellus, vel tempor tellus
-                  consectetur vitae. Nulla nec sapien ac eros tincidunt
-                  hendrerit.
+                  The geolocation feature in Suchana enables users to pinpoint
+                  their location and receive alerts about elephant sightings,
+                  movements, or attacks in their immediate vicinity, providing
+                  them with critical information to take necessary precautions
+                  and avoid conflicts with elephants.
+                </p>
+              </div>
+            </div>
+            <div className='bg-white shadow-lg rounded-lg'>
+              <div className='p-6'>
+                <MdOutlineSecurity size={25} />
+                <h3 className='text-xl font-medium text-gray-900 mt-4'>
+                  Authenticated alerts
+                </h3>
+                <p className='mt-2 text-gray-600'>
+                  By limiting access to the alerting function to authenticated
+                  individuals, Suchana ensures that the information provided is
+                  accurate, credible, and trustworthy, promoting effective
+                  management of human-elephant conflicts and ensuring public
+                  safety in affected areas.
                 </p>
               </div>
             </div>
             <div className='bg-white shadow-lg rounded-lg'>
               <div className='p-6'>
                 <svg className='w-16 h-16 text-gray-700' viewBox='0 0 24 24'>
-                  <path
-                    fill='currentColor'
-                    d='M20.7,7.3c-1.1-1.1-2.9-1.2-4.2-0.3l-7.3,4.4L7.8,7.1C7.4,6.8,7,6.7,6.6,6.7c-0.6,0-1.1,0.2-1.5,0.6L2.3,9.3C1.5,10.1,1.5,11.4,2.3,12.2l7.3,4.4l0,0c0..6,0.4,1.3,0.6,2,0.6s1.4-0.2,2-0.6l7.3-4.4C21.6,10.2,21.6,8.9,20.7,7.3z'
-                  />
+                  <AiOutlineFieldTime size={25} />
                 </svg>
                 <h3 className='text-xl font-medium text-gray-900 mt-4'>
-                  Feature 2
+                  Real time solution
                 </h3>
                 <p className='mt-2 text-gray-600'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus maximus faucibus tellus, vel tempor tellus
-                  consectetur vitae. Nulla nec sapien ac eros tincidunt
-                  hendrerit.
-                </p>
-              </div>
-            </div>
-            <div className='bg-white shadow-lg rounded-lg'>
-              <div className='p-6'>
-                <svg className='w-16 h-16 text-gray-700' viewBox='0 0 24 24'>
-                  <path
-                    fill='currentColor'
-                    d='M20.7,7.3c-1.1-1.1-2.9-1.2-4.2-0.3l-7.3,4.4L7.8,7.1C7.4,6.8,7,6.7,6.6,6.7c-0.6,0-1.1,0.2-1.5,0.6L2.3,9.3C1.5,10.1,1.5,11.4,2.3,12.2l7.3,4.4l0,0c0.6,0.4,1.3,0.6,2,0.6s1.4-0.2,2-0.6l7.3-4.4C21.6,10.2,21.6,8.9,20.7,7.3z'
-                  />
-                </svg>
-                <h3 className='text-xl font-medium text-gray-900 mt-4'>
-                  Feature 3
-                </h3>
-                <p className='mt-2 text-gray-600'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Phasellus maximus faucibus tellus, vel tempor tellus
-                  consectetur vitae. Nulla nec sapien ac eros tincidunt
-                  hendrerit.
+                  By delivering accurate and timely information in real-time,
+                  Suchana enables users to respond proactively and prevent
+                  potential conflicts with elephants, promoting human-elephant
+                  coexistence in affected areas.
                 </p>
               </div>
             </div>
