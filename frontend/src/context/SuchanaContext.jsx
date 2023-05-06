@@ -31,18 +31,7 @@ function SuchanaContextProvider({ children }) {
   //     }
   //   };
 
-  const checkUser = async (data) => {
-    try {
-      const response = await axios.post(
-        `api/users/check`,
-        data
-      );
-      const user = response.data.user;
-      dispatch({ type: "GET_USER", payload: user });
-    } catch (error) {
-      //console.error(error);
-    }
-  };
+
 
 
   return (

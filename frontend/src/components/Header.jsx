@@ -8,7 +8,7 @@ const Header = () => {
 
   useEffect(() => {
     console.log(user)
-  }, [user])
+  }, [isAuthenticated])
 
   return (
     <div className='navbar bg-base-100'>

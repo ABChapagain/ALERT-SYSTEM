@@ -13,7 +13,6 @@ function Check() {
     var [userData, setUserData] = useState({})
 
 
-    const { checkUser, hello } = useContext(SuchanaContext)
 
     function sendData() {
 
@@ -27,16 +26,17 @@ function Check() {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                if (data.number)
-                    navigate('/dashboard')
+                if (data.phone)
+                    // navigate('/dashboard')
+                    console.log('verified')
                 else
                     navigate('/auth/phone')
             }
             )
-
     }
 
     useEffect(() => {
+        console.log(user)
 
         if (user)
             sendData()
