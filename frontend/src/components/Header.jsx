@@ -13,7 +13,7 @@ const Header = () => {
   useEffect(() => {
     user && checkCurrentUser(user);
   }, [user]);
-  console.log(currentUser);
+  // console.log(currentUser);
 
   return (
     <div className="navbar bg-base-100">

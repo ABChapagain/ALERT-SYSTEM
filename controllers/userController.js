@@ -85,6 +85,20 @@ const updateUserRole = asyncHandler(async (req, res) => {
   res.status(202).send(user);
 });
 
+const updateToken = asyncHandler(async (req, res) => {
+  console.log(req.params.email);
+
+  const { token } = req.body;
+  console.log(token);
+  const response = await User.findOneAndUpdate(
+    { email: req.params.email },
+    { $set: { fcm_token: token } },
+    { new: true }
+  );
+  // res.send(response);
+  console.log(response);
+});
+
 export {
   authUser,
   getUsers,
@@ -92,4 +106,5 @@ export {
   getCurrentUser,
   fetchSingleUser,
   updateUserRole,
+  updateToken,
 };
