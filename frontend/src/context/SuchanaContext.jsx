@@ -3,6 +3,7 @@ import SuchanaReducer from "./SuchanaReducer";
 import axios from "axios";
 
 const SuchanaContext = createContext();
+const origin = process.env.REACT_APP_ORIGIN;
 
 function SuchanaContextProvider({ children }) {
   const initialState = {
@@ -13,26 +14,9 @@ function SuchanaContextProvider({ children }) {
 
   const [state, dispatch] = useReducer(SuchanaReducer, initialState);
 
-  //   const fetchTrendingMovies = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `https://api.themoviedb.org/3/trending/movie/day?api_key=${state.apiKey}`,
-  //         {
-  //           headers: {
-  //             Authorization: state.token,
-  //           },
-  //         }
-  //       );
-  //       const trendingMovies = response.data.results;
-  //       dispatch({ type: "GET_TRENDING_MOVIES", payload: trendingMovies });
-  //     } catch (error) {
-  //       //console.error(error);
-  //     }
-  //   };
-
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/users/auth");
+      const response = await axios.get(`${origin}/api/users`);
       const data = response.data;
       dispatch({ type: "GET_USERS", payload: data });
     } catch (e) {
@@ -40,11 +24,18 @@ function SuchanaContextProvider({ children }) {
     }
   };
 
+  const fetchLoggedUserInfo = async (email) => {
+    try {
+      const response = await axios.get(`${origin}/api/user`);
+    } catch (e) {}
+  };
+
   return (
     <SuchanaContext.Provider
       value={{
         ...state,
         fetchUsers,
+        fetchLoggedUserInfo,
       }}
     >
       {children}

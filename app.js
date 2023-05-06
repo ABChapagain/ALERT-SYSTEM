@@ -6,6 +6,7 @@ import connectDB from "./config/dbConnect.js";
 
 // Import Routes
 import userRoute from "./routes/userRoute.js";
+import alertRoute from "./routes/alertRoute.js";
 
 dotenv.config();
 connectDB();
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/api/users", userRoute);
+app.use("/api/alerts", alertRoute);
 
 const PORT = process.env.PORT || 5000;
 
