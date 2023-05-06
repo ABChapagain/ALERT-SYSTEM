@@ -21,6 +21,7 @@ import AlertView from './pages/admin/AlertView'
 import CheckUser from './pages/CheckUser'
 import AdminMessages from './pages/admin/AdminMessages'
 import MessageCreate from './pages/admin/MessageCreate'
+import Logout from './pages/Logout'
 
 function App() {
   return (
@@ -44,6 +45,8 @@ function App() {
 
             <Route path='/admin/messages' element={<AdminMessages />} />
             <Route path='/admin/messages/create' element={<MessageCreate />} />
+
+            <Route path='/logout' element={<Logout />} />
           </Routes>
         </main>
         <Footer />
