@@ -8,11 +8,12 @@ const Header = () => {
   var { isAuthenticated, user, logout } = useAuth0();
   var [loading, setLoading] = useState(false);
 
-  const { checkCurrentUser } = useContext(SuchanaContext);
+  const { checkCurrentUser, currentUser } = useContext(SuchanaContext);
 
   useEffect(() => {
     user && checkCurrentUser(user);
   }, [user]);
+  console.log(currentUser);
 
   return (
     <div className="navbar bg-base-100">

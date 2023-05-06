@@ -1,15 +1,17 @@
-import express from 'express'
+import express from "express";
 
-const router = express.Router()
+const router = express.Router();
 
 import {
   authUser,
   getUsers,
   updatePhone,
-} from '../controllers/userController.js'
+  getUser,
+} from "../controllers/userController.js";
 
-router.route('/auth').post(authUser)
-router.route('/').get(getUsers)
-router.route('/updatePhone').post(updatePhone)
+router.route("/auth").post(authUser);
+router.route("/").get(getUsers);
+router.route("/:email").get(getUser);
+router.route("/updatePhone").post(updatePhone);
 
-export default router
+export default router;
