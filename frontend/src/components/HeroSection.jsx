@@ -64,9 +64,7 @@ const HeroSection = () => {
               <label
                 htmlFor='my-modal'
                 onClick={() => {
-                  if (isAuthenticated) {
-                    postAlert()
-                  } else {
+                  if (!isAuthenticated) {
                     navigate('/auth')
                   }
                 }}

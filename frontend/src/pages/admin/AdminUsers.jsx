@@ -11,16 +11,22 @@ const AdminUsers = () => {
   const { fetchUsers, users, currentUser } = useContext(SuchanaContext)
 
   useEffect(() => {
-    if (
-      currentUser?.role !== 'super-admin' ||
-      currentUser?.role !== 'local-admin'
-    ) {
-      navigate('/')
+    if (currentUser === null) {
+      //
+    } else {
+      if (
+        currentUser?.role === 'local-admin' ||
+        currentUser?.role === 'super-admin'
+      ) {
+        fetchUsers()
+      } else {
+        // navigate('/')
+      }
+      console.log(currentUser)
     }
-    fetchUsers()
-  }, [navigate])
+    // fetchUsers()
+  }, [currentUser])
 
-  console.log(users)
   return (
     <div className='container mx-auto mt-10 min-h-screen'>
       <div className='mb-5'>

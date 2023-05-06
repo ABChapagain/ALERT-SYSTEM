@@ -34,9 +34,9 @@ function App() {
             <Route path='/auth/phone' element={<Phone />} />
             <Route path='/explore' element={<Explore />} />
             <Route path='/check' element={<CheckUser />} />
+            <Route path='/alerts/:id' element={<AlertView />} />
 
             <Route path='/admin/alerts' element={<AdminAlerts />} />
-            <Route path='/admin/alerts/:id' element={<AlertView />} />
 
             <Route path='/admin/users' element={<AdminUsers />} />
             <Route path='/admin/users/:id' element={<UserEdit />} />
