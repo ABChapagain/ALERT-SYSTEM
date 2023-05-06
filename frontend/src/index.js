@@ -10,7 +10,8 @@ root.render(
     domain='dev-74ps7j4fsnlvuuel.us.auth0.com'
     clientId='WN3aZiokEien1zyuNxwpq7bTa7bosKcZ'
     redirectUri={window.location.origin}
-    reloadOnRedirect={false}
+    useRefreshTokens={true}
+    cacheLocation='localstorage'
     authorizationParams={{
       redirect_uri: window.location.origin,
     }}

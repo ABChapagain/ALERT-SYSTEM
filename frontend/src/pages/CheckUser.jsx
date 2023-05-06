@@ -18,15 +18,20 @@ function CheckUser() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ data: user }),
+      body: JSON.stringify({
+        name: user.name,
+        email: user.email,
+        username: user.nickname,
+        image: user.picture,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
-        if (data.phone)
+        if (data.phone) {
           // navigate('/dashboard')
           console.log('verified')
-        else navigate('/auth/phone')
+        } else navigate('/auth/phone')
       })
   }
 
