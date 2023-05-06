@@ -1,4 +1,6 @@
 import React from 'react'
+import { FiEye, FiCheck, FiX } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 const AdminAlert = () => {
   return (
@@ -8,10 +10,11 @@ const AdminAlert = () => {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
               <th>Title</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Location</th>
+              <th>User</th>
+              <th>User's Phone</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -21,20 +24,17 @@ const AdminAlert = () => {
               <td>Cy Ganderton</td>
               <td>Quality Control Specialist</td>
               <td>Blue</td>
-            </tr>
-            {/* row 2 */}
-            <tr className='hover'>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
+              <td>
+                <Link to={`/admin/alerts/id`} className='btn btn-ghost mr-2'>
+                  <FiEye />
+                </Link>
+                <Link to={`/admin/alerts/id`} className='btn btn-ghost mr-2'>
+                  <FiX />
+                </Link>
+                <Link to={`/admin/alerts/id`} className='btn btn-ghost mr-2'>
+                  <FiCheck />
+                </Link>
+              </td>
             </tr>
           </tbody>
         </table>
