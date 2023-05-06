@@ -22,7 +22,7 @@ const HeroSection = () => {
   }
   useEffect(() => {
     getCordinates()
-  }, [])
+  }, [user])
 
   async function postAlert() {
     // get latitude and longitude
@@ -74,7 +74,7 @@ const HeroSection = () => {
                     navigate('/auth')
                   }
                 }}
-                className='btn'
+                className='btn bg-[#2b2e5f]'
               >
                 Emergency? Alert now!!!
               </label>
@@ -105,7 +105,7 @@ const HeroSection = () => {
                     </label>
                     <label
                       onClick={() => postAlert()}
-                      className='btn btn-primary'
+                      className='btn bg-[#2b2e5f]'
                     >
                       I am aware, let me send an Alert
                     </label>

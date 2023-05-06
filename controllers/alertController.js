@@ -11,4 +11,12 @@ const getAlerts = asyncHandler(async (req, res) => {
   res.json(alerts)
 })
 
-export { getAlerts, postAlerts }
+const getSingleAlert = asyncHandler(async (req, res) => {
+  const alert = await Alert.findById(req.params.id).populate(
+    'user',
+    'id name phone image'
+  )
+  res.json(alert)
+})
+
+export { getAlerts, postAlerts, getSingleAlert }

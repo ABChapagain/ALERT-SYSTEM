@@ -43,7 +43,7 @@ const AdminAlert = () => {
             {alerts?.map((alert) => (
               <tr key={alert._id}>
                 <td>{alert.title}</td>
-                <td>{`${alert.location.lat}, ${alert.location.lang}`}</td>
+                <td>{`${alert.location?.lat}, ${alert.location?.lang}`}</td>
                 <td>{alert.user?.name}</td>
                 <td>{alert.user?.phone}</td>
                 <td>

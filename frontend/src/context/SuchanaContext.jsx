@@ -14,6 +14,7 @@ function SuchanaContextProvider({ children }) {
     currentUser: null,
     alerts: null,
     singleUser: null,
+    singleAlert: null,
   };
 
   const [state, dispatch] = useReducer(SuchanaReducer, initialState);
@@ -59,6 +60,15 @@ function SuchanaContextProvider({ children }) {
     }
   };
 
+  const fetchSingleAlert=async(id)=>{ 
+    try {
+      const response = await axios.get(`${origin}/api/alerts/${id}`);
+      dispatch({ type: "GET_SINGLE_ALERT", payload: response.data });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <SuchanaContext.Provider
       value={{
@@ -67,6 +77,7 @@ function SuchanaContextProvider({ children }) {
         checkCurrentUser,
         fetchAlerts,
         fetchUser,
+        fetchSingleAlert
       }}
     >
       {children}

@@ -1,9 +1,31 @@
 import Map from '../../components/Map'
-
+import { useContext } from 'react'
+import SuchanaContext from '../../context/SuchanaContext'
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 const AlertView = () => {
+  const { id } = useParams()
+
+  const { singleAlert, fetchSingleAlert } = useContext(SuchanaContext)
+
+  useEffect(() => {
+    if (!singleAlert) {
+      fetchSingleAlert(id)
+    }
+  }, [id, singleAlert, fetchSingleAlert])
+  console.log(singleAlert)
+
+  // const markers = [
+  //   { lat: 27.7125534, lng: 85.3423898, title: 'Deerwalk Complex' },
+  // ]
+
   const markers = [
-    { lat: 27.7125534, lng: 85.3423898, title: 'Deerwalk Complex' },
+    {
+      lat: Number(singleAlert?.location?.lat),
+      lng: Number(singleAlert?.location?.lang),
+      title: singleAlert?.user?.name,
+    },
   ]
 
   const markerImage = {
@@ -184,21 +206,31 @@ const AlertView = () => {
   return (
     <>
       <Map
-        lat={27.712333}
-        lng={85.3398728}
+        lat={Number(singleAlert?.location?.lat)}
+        lng={Number(singleAlert?.location?.lang)}
         markers={markers}
         theme={theme}
         markerImage={markerImage}
       />
       <div className='h-[500px]'>
-        <div className='hero-content mt-10 text-left'>
+        <div className='hero-content mx-auto mt-10 text-left'>
           <div className='max-w-3xl'>
-            <h1 className='text-5xl font-bold'>Alert Title</h1>
-            <p className='py-6'>
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+            <h1 className='text-5xl font-bold'>{singleAlert?.title}</h1>
+            <p className='py-6'>{singleAlert?.message}</p>
+            <div className='flex justify-between items-center mt-10'>
+              <figure className='h-10 w-10'>
+                <img
+                  src={singleAlert?.user?.image}
+                  alt='User'
+                  referrerPolicy='no-referrer'
+                  className='rounded-full'
+                />
+              </figure>
+              <span>
+                Posted By{' '}
+                <span className='font-bold'>{singleAlert?.user?.name}</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
