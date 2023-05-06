@@ -1,5 +1,6 @@
 import Map from '../../components/Map'
 
+
 const AlertView = () => {
   const markers = [
     { lat: 27.7125534, lng: 85.3423898, title: 'Deerwalk Complex' },

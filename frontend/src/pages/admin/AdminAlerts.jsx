@@ -44,8 +44,8 @@ const AdminAlert = () => {
               <tr key={alert._id}>
                 <td>{alert.title}</td>
                 <td>{`${alert.location.lat}, ${alert.location.lang}`}</td>
-                <td>{alert.user.name}</td>
-                <td>{alert.user.phone}</td>
+                <td>{alert.user?.name}</td>
+                <td>{alert.user?.phone}</td>
                 <td>
                   <Link
                     to={`/alerts/${alert._id}`}

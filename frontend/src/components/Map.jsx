@@ -1,7 +1,16 @@
 import React, { useRef, useEffect } from 'react'
 
-function Map({ lat, lng, markers, theme, markerImage, alerts }) {
+function Map({ lat, lng, markers, theme, markerImage }) {
   const mapRef = useRef(null)
+  const [selectedMarker, setSelectedMarker] = React.useState(null)
+
+  const handleMarkerClick = (marker) => {
+    setSelectedMarker(marker)
+  }
+
+  const handleCloseInfoWindow = () => {
+    setSelectedMarker(null)
+  }
 
   useEffect(() => {
     const map = new window.google.maps.Map(mapRef.current, {
@@ -19,10 +28,10 @@ function Map({ lat, lng, markers, theme, markerImage, alerts }) {
       // get information onclick the marker
       const infowindow = new window.google.maps.InfoWindow({
         content: `<div>
-                    <h3>${title}</h3>
-                    <p>Latitude: ${lat}</p>
-                    <p>Longitude: ${lng}</p>
-                  </div>`,
+<h3>${title}</h3>
+<p>Latitude: ${lat}</p>
+<p>Longitude: ${lng}</p>
+</div>`,
       })
       const marker = new window.google.maps.Marker({
         position: { lat, lng },
@@ -36,11 +45,7 @@ function Map({ lat, lng, markers, theme, markerImage, alerts }) {
     })
   }, [lat, lng, markers, markerImage, theme])
 
-  return (
-    <div ref={mapRef} style={{ width: '100%', height: '100%' }}>
-      {' '}
-    </div>
-  )
+  return <div ref={mapRef} style={{ width: '100%', height: '550px' }} />
 }
 
 export default Map
