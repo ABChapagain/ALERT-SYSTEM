@@ -28,8 +28,8 @@ function SuchanaContextProvider({ children }) {
 
   const checkCurrentUser = async (data) => {
     try {
-      // const response = await axios.get(`${origin}/api/user`);
-      dispatch({ type: "CHECK_CURRENT_USER", payload: data });
+      const response = await axios.get(`${origin}/api/users/${data.email}`);
+      dispatch({ type: "CHECK_CURRENT_USER", payload: response.data });
     } catch (e) {
       console.log(e);
     }
