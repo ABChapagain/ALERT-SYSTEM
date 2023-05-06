@@ -7,8 +7,11 @@ import SuchanaContext from '../context/SuchanaContext'
 const Explore = () => {
   const { fetchAlerts, alerts } = useContext(SuchanaContext)
   useEffect(() => {
-    fetchAlerts()
-  }, [])
+    if (!alerts) {
+      fetchAlerts()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchAlerts])
 
   console.log(alerts)
 
@@ -24,8 +27,14 @@ const Explore = () => {
     { lat: 27.7120462, lng: 85.341067, title: 'Deerwalk Sifal School' },
   ]
 
+  const mak = alerts?.map((alert) => ({
+    lat: alert.location.lat,
+    lng: alert.location.lang,
+    title: alert.user.name,
+  }))
+
   const markerImage = {
-    url: 'https://i.ibb.co/nPhFTzH/elephant.png',
+    url: 'https://i.ibb.co/GTv2byd/New-Project-6.png',
     scaledSize: new window.google.maps.Size(60, 60),
   }
 
@@ -208,6 +217,7 @@ const Explore = () => {
           markers={markers}
           theme={theme}
           markerImage={markerImage}
+          alerts={alerts}
         />
       </div>
     </div>

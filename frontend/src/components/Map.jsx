@@ -1,16 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 
-function Map({ lat, lng, markers, theme, markerImage }) {
+function Map({ lat, lng, markers, theme, markerImage, alerts }) {
   const mapRef = useRef(null)
-  const [selectedMarker, setSelectedMarker] = React.useState(null)
-
-  const handleMarkerClick = (marker) => {
-    setSelectedMarker(marker)
-  }
-
-  const handleCloseInfoWindow = () => {
-    setSelectedMarker(null)
-  }
 
   useEffect(() => {
     const map = new window.google.maps.Map(mapRef.current, {
@@ -45,7 +36,11 @@ function Map({ lat, lng, markers, theme, markerImage }) {
     })
   }, [lat, lng, markers, markerImage, theme])
 
-  return <div ref={mapRef} style={{ width: '100%', height: '550px' }} />
+  return (
+    <div ref={mapRef} style={{ width: '100%', height: '100%' }}>
+      {' '}
+    </div>
+  )
 }
 
 export default Map

@@ -25,7 +25,6 @@ const AdminAlert = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser, navigate])
 
-  console.log(alerts)
   return (
     <div className='container mx-auto mt-10 min-h-screen'>
       <div className='overflow-x-auto'>

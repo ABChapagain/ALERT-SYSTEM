@@ -22,10 +22,9 @@ const AdminUsers = () => {
       } else {
         navigate('/')
       }
-      console.log(currentUser)
     }
-    // fetchUsers()
-  }, [currentUser, navigate, fetchUsers])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser, navigate])
 
   return (
     <div className='container mx-auto mt-10 min-h-screen'>

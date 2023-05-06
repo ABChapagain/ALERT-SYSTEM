@@ -11,8 +11,8 @@ const Header = () => {
 
   useEffect(() => {
     user && checkCurrentUser(user)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
-  console.log(currentUser)
 
   return (
     <div className='navbar bg-base-100'>
