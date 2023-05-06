@@ -1,24 +1,60 @@
-import React from "react";
-import SuchanaContext from "../context/SuchanaContext";
-import { useContext } from "react";
-import { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React from 'react'
+import SuchanaContext from '../context/SuchanaContext'
+import { useContext } from 'react'
+import { useEffect, useState } from 'react'
+import { messaging } from '../firebase'
+import { getToken } from 'firebase/messaging'
+import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function CheckUser() {
-  var navigate = useNavigate();
+  var navigate = useNavigate()
 
-  const { checkCurrentUser } = useContext(SuchanaContext);
+  const { checkCurrentUser, currentUser } = useContext(SuchanaContext)
 
-  var { user, isAuthenticated } = useAuth0();
-  var [userData, setUserData] = useState({});
+  var { user, isAuthenticated } = useAuth0()
+  // var [token, setToken] = useState();
+  let token
+
+  async function requestPermission() {
+    console.log('Requesting permission...')
+    const permission = await Notification.requestPermission()
+    if (permission === 'granted') {
+      getToken(messaging, {
+        vapidKey:
+          'BPqsnwNI05Ncrsmt7dh_7KwrRBPgvOvUtzKGKb2YhLrJHLr-zWyO76EqzXHb5lr60LtlfDNHN6RSh0nsS7H3EaQ',
+      })
+        .then((currentToken) => {
+          if (currentToken) {
+            console.log(currentToken)
+            console.log(user.email)
+            axios.put(`${origin}/api/users/updateToken/${user.email}`, {
+              token: currentToken,
+            })
+          } else {
+            console.log(
+              'No registration token available. Request permission to generate one.'
+            )
+          }
+        })
+        .catch((err) => {
+          console.log('An error occurred while retrieving token. ', err)
+        })
+
+      console.log('Notification permission granted.')
+    } else if (permission === 'denied') {
+      console.log('Denied permission')
+    }
+  }
+
+  useEffect(() => {}, [])
 
   function sendData() {
-    fetch("api/users/auth", {
-      method: "POST",
+    fetch('api/users/auth', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name: user.name,
@@ -31,25 +67,28 @@ function CheckUser() {
       .then((data) => {
         // console.log(data);
         //sending data to context
-        // checkCurrentUser(data);
+        checkCurrentUser(data)
         if (data.phone) {
-          navigate("/");
-          console.log("verified");
-        } else navigate("/auth/phone");
-      });
+          requestPermission()
+
+          navigate('/')
+
+          console.log('verified')
+        } else navigate('/auth/phone')
+      })
   }
 
   useEffect(() => {
-    console.log(user);
-
-    if (user) sendData();
-  }, [user]);
+    if (user) {
+      sendData()
+    }
+  }, [user])
 
   return (
     <div>
       <h1>Checking</h1>
     </div>
-  );
+  )
 }
 
-export default CheckUser;
+export default CheckUser
