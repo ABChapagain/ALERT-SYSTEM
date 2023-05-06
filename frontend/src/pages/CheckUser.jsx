@@ -29,7 +29,7 @@ function CheckUser() {
       .then((data) => {
         console.log(data)
         if (data.phone) {
-          // navigate('/dashboard')
+          navigate('/')
           console.log('verified')
         } else navigate('/auth/phone')
       })
